@@ -1,0 +1,72 @@
+ Features
+✅ User Authentication (Signup, Login, Logout)
+✅ Upload & Watch Videos
+✅ Like & Dislike Videos
+✅ Comment on Videos (Add, Edit, Delete)
+✅ Search Videos
+✅ View User Profiles & Channels
+✅ Fully Responsive UI
+
+ Tech Stack-----------------------------
+Frontend (React + Tailwind CSS)
+React Router - Navigation
+Axios - API Requests
+Tailwind CSS - Styling
+Toastify - Notifications
+MUI Icons - Icons
+Backend (Node.js + Express)
+MongoDB + Mongoose - Database
+JWT Authentication - Security
+Cloudinary - Media Uploads
+Bcrypt - Password Hashing
+
+
+
+Setup Instructions--------------------
+
+
+cd ourtube
+
+ Backend Setup------------------
+
+Navigate to the Backend Directory
+
+cd server
+Install Dependencies
+
+npm install
+Create a .env File
+Inside server/, create a .env file and add:
+
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+CLIENT_URL=string_path
+
+Before starting the server , initiazine DB with node init.js
+this will create demo Data for App
+
+Start the Backend Server----------
+
+npm run dev
+Your backend should now be running on http://localhost:4000/ 
+
+Frontend Setup-------------------
+Navigate to the Frontend Directory
+
+cd client
+Install Dependencies
+npm install
+
+Start the React App
+npm start
+
+Your frontend should now be running now
+
+Usage ---------------
+Sign Up / Log In to access features.
+Upload Videos with title, description & thumbnail.
+Watch Videos and interact using likes & comments.
+Search for Videos and browse user channels.
+
+githubLink :-  https://github.com/doabletome/OurTube.git
