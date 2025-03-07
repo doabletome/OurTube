@@ -1,72 +1,80 @@
- Features
-✅ User Authentication (Signup, Login, Logout)
-✅ Upload & Watch Videos
-✅ Like & Dislike Videos
-✅ Comment on Videos (Add, Edit, Delete)
-✅ Search Videos
-✅ View User Profiles & Channels
-✅ Fully Responsive UI
+YouTube Clone - Full Stack Project
+This is a MERN stack YouTube clone that allows users to upload, watch, comment, and manage videos. The project includes authentication, video management, and comments functionality.
 
- Tech Stack-----------------------------
-Frontend (React + Tailwind CSS)
-React Router - Navigation
-Axios - API Requests
-Tailwind CSS - Styling
-Toastify - Notifications
-MUI Icons - Icons
-Backend (Node.js + Express)
-MongoDB + Mongoose - Database
-JWT Authentication - Security
-Cloudinary - Media Uploads
-Bcrypt - Password Hashing
+Features
+User Authentication (Signup, Login, Logout)
+Video Upload & Streaming
+Search Functionality
+Like/Dislike System
+Comment System (Add, Edit, Delete)
+User Profile & Channel
+Secure API with JWT Authentication
+Cloudinary Integration for Video/Thumbnail Upload
 
+Installation & Setup
+Follow these steps to set up the project on your local machine.
 
-
-Setup Instructions--------------------
-
-
-cd ourtube
-
- Backend Setup------------------
-
-Navigate to the Backend Directory
+1.  Set Up Backend (Server)
+    Navigate to the server directory:
 
 cd server
-Install Dependencies
+Install dependencies:
 
 npm install
-Create a .env File
-Inside server/, create a .env file and add:
 
-PORT=4000
-MONGO_URI=your_mongodb_connection_string
+Now Intialise the DB by runing node init.js file
+node init.js // this file uploads the sample data to DB
+
+Set up environment variables:
+
+create .env
+
+MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret_key
-CLIENT_URL=string_path
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
-Before starting the server , initiazine DB with node init.js
-this will create demo Data for App
+Start the server:
 
-Start the Backend Server----------
-
-npm run dev
-Your backend should now be running on http://localhost:4000/ 
-
-Frontend Setup-------------------
-Navigate to the Frontend Directory
-
-cd client
-Install Dependencies
-npm install
-
-Start the React App
 npm start
 
-Your frontend should now be running now
+Your server will be running on http://localhost:4000
 
-Usage ---------------
-Sign Up / Log In to access features.
-Upload Videos with title, description & thumbnail.
-Watch Videos and interact using likes & comments.
-Search for Videos and browse user channels.
+2. Set Up Frontend (Client)
+   Navigate to the client directory:
 
-githubLink :-  https://github.com/doabletome/OurTube.git
+cd ../client
+Install dependencies:
+
+npm install
+
+create env
+VITE_BACKEND_URL=http://localhost:4000
+VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
+VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
+
+Start the frontend:
+
+npm run dev
+Your frontend will be running on http://localhost:5173
+
+Usage
+Sign Up / Login to create a user.
+Upload Videos (Files will be uploaded to Cloudinary).
+Watch Videos and interact (like, dislike, comment).
+Search for Videos.
+Edit or Delete Comments.
+
+Troubleshooting
+Common Issues & Fixes
+❌ MongoDB Connection Error?
+
+Ensure MongoDB is running and the MONGO_URI is correct in .env.
+❌ Cloudinary Upload Not Working?
+
+Ensure you have a valid Cloudinary account and set correct API keys in .env.
+❌ Frontend Not Connecting to Backend?
+
+Check VITE_BACKEND_URL in client/.env.
+Restart both frontend and backend.

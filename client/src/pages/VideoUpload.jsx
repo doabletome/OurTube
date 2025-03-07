@@ -6,6 +6,10 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+const CLOUDINARY_API_URL = import.meta.env.VITE_CLOUDINARY_API_URL;
+
 const VideoUpload = () => {
   const [inputField, setInputField] = useState({
     title: "",
@@ -42,11 +46,11 @@ const VideoUpload = () => {
 
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "youtube-clone");
+    data.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
     try {
       // Upload image/video to Cloudinary
       const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/dtwunusjp/${type}/upload`,
+        `${CLOUDINARY_API_URL}/${CLOUDINARY_CLOUD_NAME}/${type}/upload`,
         data
       );
       if (type === "image") {

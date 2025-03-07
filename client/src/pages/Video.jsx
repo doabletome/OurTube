@@ -63,6 +63,11 @@ const Video = () => {
   };
 
   const handleEditComment = (commentId) => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      toast.error("Please login first to edit a comment!");
+      return;
+    }
     axios
       .put(
         `http://localhost:4000/commentapi/comment/${commentId}`,
@@ -84,6 +89,11 @@ const Video = () => {
   };
 
   const handleDeleteComment = (commentId) => {
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      toast.error("Please login first to edit a comment!");
+      return;
+    }
     if (!commentId) {
       console.error("Comment ID is undefined. dfb g w w");
       return;
