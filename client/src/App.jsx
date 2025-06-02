@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "./Components/NavBar";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import Video from "./pages/Video";
 import Profile from "./pages/Profile";
