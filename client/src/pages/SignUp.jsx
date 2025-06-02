@@ -12,6 +12,7 @@ const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const CLOUDINARY_API_URL = import.meta.env.VITE_CLOUDINARY_API_URL;
 
 const SignUp = () => {
+  const API_BASE = import.meta.env.VITE_API_URL;
   const defaultProfilePic =
     "https://th.bing.com/th/id/OIP.Wy2uo_y-ttULYs4chLmqSAAAAA?rs=1&pid=ImgDetMain";
   const [uploadedImageUrl, setUploadedImageUrl] = useState(defaultProfilePic);
@@ -68,7 +69,7 @@ const SignUp = () => {
     setProgressBar(true);
 
     axios
-      .post("http://localhost:4000/auth/signup", signUpField)
+      .post(`${API_BASE}/auth/signup`, signUpField)
       .then((res) => {
         toast.success("Signup successful!");
         setProgressBar(false);

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const HomePage = ({ isOpen }) => {
+  const API_BASE = import.meta.env.VITE_API_URL;
+
   const [data, setData] = useState([]);
   const option = [
     "All",
@@ -29,7 +31,7 @@ const HomePage = ({ isOpen }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/allvideo")
+      .get(`${API_BASE}/api/allvideo`)
       .then((res) => {
         setData(res.data.videos);
       })

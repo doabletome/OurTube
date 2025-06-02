@@ -8,7 +8,10 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import axios from "axios";
+
 const NavBar = ({ handleSideNav }) => {
+  const API_BASE = import.meta.env.VITE_API_URL;
+
   const [userPic, setUserPic] = useState(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Unknown_person.jpg/434px-Unknown_person.jpg"
   );
@@ -48,7 +51,7 @@ const NavBar = ({ handleSideNav }) => {
 
   async function getLogoutFun() {
     axios
-      .post("http://localhost:4000/auth/logout", {}, { withCredentials: true })
+      .post(`${API_BASE}/auth/logout`, {}, { withCredentials: true })
       .then((res) => console.log("logOut"))
       .catch((err) => console.log(err));
   }

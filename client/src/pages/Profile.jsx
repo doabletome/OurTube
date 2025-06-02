@@ -3,21 +3,22 @@ import { Link, useParams } from "react-router-dom";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import axios from "axios";
 import LeftNav from "../Components/LeftNav";
+
 const Profile = ({ sideNav }) => {
+  const API_BASE = import.meta.env.VITE_API_URL;
+
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [user, setUser] = useState(null);
 
   const fetchProfileData = async () => {
     try {
-      const res = await axios.get(`http://localhost:4000/api/${id}/channel`);
+      const res = await axios.get(`${API_BASE}/api/${id}/channel`);
 
       console.log(res);
 
       if (res?.data?.videos.length < 1) {
-        const result = await axios.get(
-          `http://localhost:4000/auth/getUser/${id}`
-        );
+        const result = await axios.get(`${API_BASE}/auth/getUser/${id}`);
         console.log(result);
         setUser(result?.data);
       } else {

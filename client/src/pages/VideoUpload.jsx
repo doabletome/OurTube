@@ -11,6 +11,7 @@ const CLOUDINARY_UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 const CLOUDINARY_API_URL = import.meta.env.VITE_CLOUDINARY_API_URL;
 
 const VideoUpload = () => {
+  const API_BASE = import.meta.env.VITE_API_URL;
   const [inputField, setInputField] = useState({
     title: "",
     description: "",
@@ -72,13 +73,9 @@ const VideoUpload = () => {
       return;
     }
     try {
-      const resp = await axios.post(
-        "http://localhost:4000/api/video",
-        inputField,
-        {
-          withCredentials: true,
-        }
-      );
+      const resp = await axios.post(`${API_BASE}/api/video`, inputField, {
+        withCredentials: true,
+      });
       console.log(resp);
       setLoader(false);
       navigate("/");

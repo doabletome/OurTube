@@ -10,6 +10,8 @@ import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const Login = ({ setLoginModal }) => {
+  const API_BASE = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
 
   const [loginField, setLoginField] = useState({ userName: "", password: "" });
@@ -22,34 +24,10 @@ const Login = ({ setLoginModal }) => {
     });
   };
 
-  // const handleLoginFun = async () => {
-  //   setLoader(true);
-  //   axios
-  //     .post("http://localhost:4000/auth/login", loginField, {
-  //       withCredentials: true,
-  //     })
-  //     .then((resp) => {
-  //       setLoader(false);
-
-  //       localStorage.setItem("token", resp.data.token);
-  //       localStorage.setItem("userId", resp.data.user._id);
-  //       localStorage.setItem("userProfilePic", resp.data.user.profilePic);
-  //       window.location.reload();
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 200);
-  //     })
-  //     .catch((err) => {
-  //       toast.error("Invalid Credentials");
-  //       console.log(err);
-  //       setLoader(false);
-  //     });
-  // };
-
   const handleLoginFun = async () => {
     setLoader(true);
     axios
-      .post("http://localhost:4000/auth/login", loginField, {
+      .post(`${API_BASE}/auth/login`, loginField, {
         withCredentials: true,
       })
       .then((resp) => {

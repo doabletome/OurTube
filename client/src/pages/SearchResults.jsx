@@ -4,6 +4,7 @@ import axios from "axios";
 import LeftNav from "../Components/LeftNav";
 
 const SearchResults = ({ sideNav }) => {
+  const API_BASE = import.meta.env.VITE_API_URL;
   const [videos, setVideos] = useState([]);
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("query");
@@ -11,7 +12,7 @@ const SearchResults = ({ sideNav }) => {
   useEffect(() => {
     if (searchQuery) {
       axios
-        .get(`http://localhost:4000/api/search?query=${searchQuery}`)
+        .get(`${API_BASE}/api/search?query=${searchQuery}`)
         .then((res) => setVideos(res.data.videos))
         .catch((err) => console.error(err));
     }

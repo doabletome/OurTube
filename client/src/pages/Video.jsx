@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Video = () => {
+  const API_BASE = import.meta.env.VITE_API_URL;
   const [comment, setComment] = useState([]);
   const [message, setMessage] = useState("");
   const [data, setData] = useState(null);
@@ -20,7 +21,7 @@ const Video = () => {
 
   const fetchVideoById = () => {
     axios
-      .get(`http://localhost:4000/api/getvideobyid/${id}`)
+      .get(`${API_BASE}/api/getvideobyid/${id}`)
       .then((res) => {
         setData(res?.data?.video);
         setVideoUrl(res?.data?.video?.videoLink);
@@ -30,7 +31,7 @@ const Video = () => {
 
   const fetchCommentsById = () => {
     axios
-      .get(`http://localhost:4000/commentapi/comment/${id}`)
+      .get(`${API_BASE}/commentapi/comment/${id}`)
       .then((res) => {
         setComment(res.data);
       })
@@ -50,7 +51,7 @@ const Video = () => {
       const body = { message, videoId: id };
       if (message.trim() == "") return;
       const response = await axios.post(
-        "http://localhost:4000/commentapi/comment",
+        `${API_BASE}/commentapi/comment`,
         body,
         { withCredentials: true }
       );
@@ -70,7 +71,7 @@ const Video = () => {
     }
     axios
       .put(
-        `http://localhost:4000/commentapi/comment/${commentId}`,
+        `${API_BASE}/commentapi/comment/${commentId}`,
         { message: editMessage },
         { withCredentials: true }
       )
@@ -99,7 +100,7 @@ const Video = () => {
       return;
     }
     axios
-      .delete(`http://localhost:4000/commentapi/comment/${commentId}`, {
+      .delete(`${API_BASE}/commentapi/comment/${commentId}`, {
         withCredentials: true,
       })
       .then(() => {
